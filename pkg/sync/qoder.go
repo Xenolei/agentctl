@@ -8,11 +8,10 @@ import (
 	"github.com/iheanyi/agentctl/pkg/skill"
 )
 
-// QoderAdapter syncs configuration to Qoder (Alibaba's AI IDE).
-// Skills live in ~/.qoder/skills/. MCP servers use ~/.qoder/mcp-settings.json
-// (standard "mcpServers" JSON, per community docs).
-// Experimental: the MCP path has not been verified against a Qoder install on
-// this machine yet; skills paths come from verified directory conventions.
+// QoderAdapter syncs configuration to Qoder CN (Alibaba's AI IDE, China version).
+// Skills live in ~/.qoder-cn/skills/. MCP servers use ~/.qoder-cn/mcp.json
+// (standard "mcpServers" JSON). Verified against a Qoder CN install: the UI only
+// lists ~/.qoder-cn/skills, and the MCP config file is mcp.json.
 type QoderAdapter struct{}
 
 func init() {
@@ -28,7 +27,7 @@ func (a *QoderAdapter) baseDir() string {
 	if err != nil {
 		return ""
 	}
-	return filepath.Join(homeDir, ".qoder")
+	return filepath.Join(homeDir, ".qoder-cn")
 }
 
 func (a *QoderAdapter) Detect() (bool, error) {
@@ -43,7 +42,7 @@ func (a *QoderAdapter) Detect() (bool, error) {
 }
 
 func (a *QoderAdapter) ConfigPath() string {
-	return filepath.Join(a.baseDir(), "mcp-settings.json")
+	return filepath.Join(a.baseDir(), "mcp.json")
 }
 
 func (a *QoderAdapter) SupportedResources() []ResourceType {

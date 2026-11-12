@@ -9,7 +9,7 @@ import (
 )
 
 // WorkBuddyAdapter syncs configuration to WorkBuddy.
-// Verified on Windows: MCP config lives at ~/.workbuddy/.mcp.json using the
+// Verified on Windows: MCP config lives at ~/.workbuddy/mcp.json using the
 // standard "mcpServers" JSON shape; skills live in ~/.workbuddy/skills/.
 type WorkBuddyAdapter struct{}
 
@@ -52,7 +52,7 @@ func (a *WorkBuddyAdapter) Detect() (bool, error) {
 }
 
 func (a *WorkBuddyAdapter) ConfigPath() string {
-	return filepath.Join(a.baseDir(), ".mcp.json")
+	return filepath.Join(a.baseDir(), "mcp.json")
 }
 
 func (a *WorkBuddyAdapter) SupportedResources() []ResourceType {
