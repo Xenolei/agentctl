@@ -88,8 +88,8 @@ var (
 
 	// Native status badge (◆) - purple/violet for tool-native servers
 	StatusNativeStyle = lipgloss.NewStyle().
-			Foreground(lipgloss.Color("#a78bfa")). // purple
-			Bold(true)
+				Foreground(lipgloss.Color("#a78bfa")). // purple
+				Bold(true)
 )
 
 // Health indicator styles
